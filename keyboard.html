@@ -1,0 +1,269 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="full-screen" content="yes"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="360-fullscreen" content="true"/>
+    <script src="jquery.min.js" type="text/javascript"></script>
+    <style type="text/css">
+        body{
+            margin:0;
+            padding: 0;
+            user-select: none;
+        }
+        div,p{
+            user-select: none;
+        }
+        #keyboardParent{
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            user-select: none;
+            background-color: rgb(207,211,217);
+        }
+        .keyboard_alphabet_outer{
+            width: 10%;
+            height: 16.66%;
+            float: left;
+            user-select: none;
+            position: relative;
+        }
+        .alphabet{
+            position: absolute;
+            top:10%;
+            width: 84%;
+            left: 8%;
+            user-select: none;
+            height: 80%;
+            font-weight: lighter;
+            background-color: white;
+            border-radius: 5px;
+            text-align: center
+        }
+        #onSelectWordDiv{
+            width: 100%;
+            height: 14.66%;
+            user-select: none;
+            background-color: white;
+            overflow-x: scroll;
+            position: relative;
+        }
+        .onSelectWord{
+            float: left;
+            position: absolute;
+            top: 0px;
+            user-select: none;
+            padding-left: 10px;
+            text-align: center;
+            height: 100%;
+            user-select: none;
+        }
+        #showWordDiv{
+            width: 100%;
+            height: 18.66%;
+            position: relative;
+            user-select: none;
+            background-color: rgb(243,243,243);
+        }
+        .sendBtn{
+            position: absolute;
+            top:10%;
+            width: 84%;
+            left: 8%;
+            height: 80%;
+            user-select: none;
+            font-weight: lighter;
+            background-color: white;
+            border-radius: 5px;
+            text-align: center
+        }
+        .eachLine{
+            width: 100%;
+            height: 25%;
+            user-select: none;
+        }
+        .innerSetBox{
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            top:10%;
+            user-select: none;
+            left: 10%;
+            background-color: white;
+            border-radius:  5px;
+        }
+        .spaceBtn{
+            position: absolute;
+            width: 100%;
+            height: 80%;
+            user-select: none;
+            top:10%;
+            background-color: white;
+            border-radius: 5px;
+        }
+        #input_btn_div{
+            position: absolute;left: 3%;width: 94%;top: 13%;height: 74%;background-color: white;
+            border-radius: 5px;
+            user-select: none;
+            overflow-x: scroll;
+            border: 1px solid rgb(219,219,219);
+        }
+        .toolkit-color{
+            background-color: rgb(168,176,187);
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+<div id="keyboardParent">
+    <div id="showWordDiv">
+        <div id="input_btn_div"></div>
+    </div>
+    <div id="onSelectWordDiv">
+    </div>
+</div>
+</body>
+<script type="application/javascript">
+          //720*392
+
+
+
+          var onSelectWordDiv = document.getElementById("onSelectWordDiv"),
+                  inputShowDiv = document.getElementById("input_btn_div");
+    window.onload = function(){
+        var width = document.body.clientWidth,
+                height = width*392/720,
+                keyboard = document.getElementById("keyboardParent");
+        keyboard.style.height = height/2*3+"px";
+        var wordList = [
+                ["q","w","e","r","t","y","u","i","o","p"],
+                ["a","s","d","f","g","h","j","k","l"],
+                ["z","x","c","v","b","n","m"]
+                ];
+
+        function printList(){
+            for (var i = 0;i<wordList[0].length;i++){
+                printInnerBtn(i,0);
+            }
+            emptyDiv();
+            for (var i = 0;i<wordList[1].length;i++){
+                printInnerBtn(i,1);
+            }
+            emptyDiv();
+            functionalDiv();
+            optionalDiv();
+            for (var i = 0;i<wordList[2].length;i++){
+                printInnerBtn(i,2);
+            }
+            optionalDiv();
+            functionalDiv();
+            functionalDiv();
+            functionalDiv(3);
+            spaceDiv();
+            enterDiv();
+            setTitle();
+            $('#input_btn_div').css({
+                "line-height":height*0.25*0.85 + "px"
+            })
+        }
+
+        function optionalDiv(){
+            var upper = document.createElement("div");
+            upper.className = "keyboard_alphabet_outer";
+            upper.style.width = width*16/720 + "px";
+            keyboard.appendChild(upper);
+        }
+
+        function functionalDiv(no){
+            var upper = document.createElement("div");
+            upper.className = "keyboard_alphabet_outer";
+            upper.style.width = width*92/720 + "px";
+            keyboard.appendChild(upper);
+            var div = document.createElement("div");
+            div.className = "innerSetBox toolkit-color";
+            if (no == 3){
+                div.style.left = "5%";
+            }
+            upper.appendChild(div);
+        }
+
+        function emptyDiv(){
+            var div = document.createElement("div");
+            div.className = "keyboard_alphabet_outer";
+            div.style.width = width/20 + "px";
+            keyboard.appendChild(div);
+        }
+
+        function spaceDiv(){
+            var div = document.createElement("div");
+            div.style.width = width*476/980 + "px";
+            keyboard.appendChild(div);
+            div.style.height = "16.66%";
+            div.style.float = "left";
+            div.style.position = "relative";
+            var innerDiv = document.createElement("div");
+            innerDiv.className = "spaceBtn";
+            div.appendChild(innerDiv);
+        }
+
+        function enterDiv(){
+            var upper = document.createElement("div");
+            upper.className = "keyboard_alphabet_outer";
+            upper.style.width = width*182/720 + "px";
+            keyboard.appendChild(upper);
+            var div = document.createElement("div");
+            div.className = "sendBtn toolkit-color";
+            div.innerText = "发送";
+            div.style.fontSize = width/32 + "px";
+            div.style.lineHeight = height*0.9/4 + "px";
+            div.style.width = "90%";
+            upper.appendChild(div);
+        }
+
+        function printInnerBtn(i,list){
+            var div = document.createElement("div");
+            div.className = "keyboard_alphabet_outer";
+            var innerDiv = document.createElement("div");
+            innerDiv.className = "alphabet";
+            innerDiv.innerText = wordList[list][i];
+            innerDiv.onclick = function(){
+                clickTheWord(wordList[list][i]);
+            };
+            keyboard.appendChild(div);
+            div.appendChild(innerDiv);
+        }
+
+        function clickTheWord(n){
+            console.log(n);
+        }
+
+        printList();
+
+        $('.alphabet').css({
+            "font-size":width/16+"px"
+        })
+
+        $('.onSelectWord').css({
+            "lineHeight":height/4+"px"
+        })
+        function setTitle(){
+            var left = 0;
+            var wordDesc = ["sadasd","asdsadasd","adasdasd","asdasdasd","dsfdsda","fuck","asdasdsad","aawww"];
+            for (var i = 0;i<wordDesc.length;i++){
+                var div = document.createElement("div");
+                div.className = "onSelectWord";
+                div.innerText = wordDesc[i];
+                div.style.left = left + "px";
+                onSelectWordDiv.appendChild(div);
+                div.onclick = function(){
+                    inputShowDiv.innerText = inputShowDiv.innerText + this.innerText;
+                }
+                left = left + 10*i + div.clientWidth;
+            }
+        }
+    }
+</script>
+</html>
