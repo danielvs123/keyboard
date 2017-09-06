@@ -1,4 +1,4 @@
-<!DOCTYPE>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
 <head>
     <meta charset="utf-8">
@@ -8,6 +8,7 @@
     <meta name="x5-fullscreen" content="true"/>
     <meta name="360-fullscreen" content="true"/>
     <script src="jquery.min.js" type="text/javascript"></script>
+    <script src="fastclick.js" type="application/javascript"></script>
     <style type="text/css">
         body{
             margin:0;
@@ -103,6 +104,9 @@
             top:10%;
             background-color: white;
             border-radius: 5px;
+            user-select: none;
+            font-weight: lighter;
+            text-align: center
         }
         #input_btn_div{
             position: absolute;left: 3%;width: 94%;top: 13%;height: 74%;background-color: white;
@@ -115,15 +119,238 @@
             background-color: rgb(168,176,187);
             user-select: none;
         }
+        #svg_div,#delete_svg_div,#upper_case_svg{
+            display: none;
+        }
     </style>
 </head>
 <body>
 <div id="keyboardParent">
     <div id="showWordDiv">
-        <div id="input_btn_div"></div>
+        <div id="input_btn_div">
+            <span id="inner_text"></span>
+        </div>
     </div>
     <div id="onSelectWordDiv">
     </div>
+</div>
+<div id="svg_div">
+    <svg
+            xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+            xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:cc="http://creativecommons.org/ns#"
+            xmlns:dc="http://purl.org/dc/elements/1.1/"
+            xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+            id="svg3118"
+            sodipodi:docname="globe.svg"
+            viewBox="0 0 832.42 723.71"
+            version="1.1"
+            inkscape:version="0.48.1 r9760"
+    >
+        <sodipodi:namedview
+                id="base"
+                bordercolor="#666666"
+                inkscape:pageshadow="2"
+                inkscape:window-y="25"
+                fit-margin-left="0"
+                pagecolor="#ffffff"
+                inkscape:window-height="949"
+                inkscape:window-maximized="1"
+                inkscape:zoom="0.35"
+                inkscape:window-x="0"
+                showgrid="false"
+                borderopacity="1.0"
+                inkscape:current-layer="g3246"
+                inkscape:cx="-329.45027"
+                inkscape:cy="267.57151"
+                fit-margin-top="0"
+                fit-margin-right="0"
+                fit-margin-bottom="0"
+                inkscape:window-width="1280"
+                inkscape:pageopacity="0.0"
+                inkscape:document-units="px"
+        />
+        <g
+                id="layer1"
+                inkscape:label="Layer 1"
+                inkscape:groupmode="layer"
+                transform="translate(40.787 -17.648)"
+        >
+            <g
+                    id="g3246"
+                    transform="translate(-317.14 277.14)"
+            >
+                <path
+                        id="path2392"
+                        sodipodi:rx="231.42857"
+                        sodipodi:ry="231.42857"
+                        style="stroke:#ffffff;stroke-miterlimit:0;stroke-width:4.7882;fill:transparent"
+                        sodipodi:type="arc"
+                        d="m654.29 578.08c0 127.81-103.61 231.43-231.43 231.43-127.81 0-231.43-103.61-231.43-231.43 0-127.81 103.61-231.43 231.43-231.43 127.81 0 231.43 103.61 231.43 231.43z"
+                        transform="matrix(1.5363 .18482 -.18482 1.5363 153.7 -863.91)"
+                        sodipodi:cy="578.07648"
+                        sodipodi:cx="422.85715"
+                />
+                <path
+                        id="path2396"
+                        sodipodi:rx="241.42857"
+                        sodipodi:ry="241.42857"
+                        style="fill-opacity:0;stroke:#ffffff;stroke-linecap:round;stroke-miterlimit:0;stroke-width:10.579"
+                        sodipodi:type="arc"
+                        d="m-802.37 206.11c68.64-113.64 216.14-150.53 330.2-82.6"
+                        sodipodi:open="true"
+                        transform="matrix(-.68626 -.29761 .32560 -.57363 271.71 -317.28)"
+                        sodipodi:cy="330.93362"
+                        sodipodi:cx="-595.71429"
+                        sodipodi:end="5.2495831"
+                        sodipodi:start="3.6849503"
+                />
+                <path
+                        id="path3170"
+                        sodipodi:rx="241.42857"
+                        sodipodi:ry="241.42857"
+                        style="fill-opacity:0;stroke:#ffffff;stroke-linecap:round;stroke-miterlimit:0;stroke-width:4.5804"
+                        sodipodi:type="arc"
+                        d="m-808.47 216.82c63.021-117.5 209.37-161.67 326.87-98.65 10.387 5.571 20.352 11.895 29.816 18.922"
+                        sodipodi:open="true"
+                        transform="matrix(-1.5767 -.70606 .76762 -1.3158 -467.84 37.374)"
+                        sodipodi:cy="330.93362"
+                        sodipodi:cx="-595.71429"
+                        sodipodi:end="5.3510742"
+                        sodipodi:start="3.6338802"
+                />
+                <path
+                        id="path3172"
+                        sodipodi:rx="241.42857"
+                        sodipodi:ry="241.42857"
+                        style="fill-opacity:0;stroke:#ffffff;stroke-linecap:round;stroke-miterlimit:0;stroke-width:4.3428"
+                        sodipodi:type="arc"
+                        d="m-810.38 220.44c61.023-118.55 206.6-165.19 325.15-104.17 12.705 6.5395 24.804 14.194 36.155 22.873"
+                        sodipodi:open="true"
+                        transform="matrix(.99212 -1.5283 1.2464 1.0139 1012.4 -1076.7)"
+                        sodipodi:cy="330.93362"
+                        sodipodi:cx="-595.71429"
+                        sodipodi:end="5.3651889"
+                        sodipodi:start="3.6169521"
+                />
+                <path
+                        id="path3178"
+                        style="stroke:#ffffff;stroke-linecap:round;stroke-miterlimit:0;stroke-width:7.4093;fill:#ffffff"
+                        inkscape:connector-curvature="0"
+                        d="m773.04-242.39-162.46 687.47"
+                />
+                <path
+                        id="path2393"
+                        sodipodi:rx="241.42857"
+                        sodipodi:ry="241.42857"
+                        style="fill-opacity:0;stroke:#ffffff;stroke-linecap:round;stroke-miterlimit:0;stroke-width:3.445"
+                        sodipodi:type="arc"
+                        d="m-793.33 192.24c63.671-90.715 180.93-126.43 284.36-86.608"
+                        sodipodi:open="true"
+                        transform="matrix(-2.0507 -1.0346 1.1004 -1.7005 -790.22 -378.06)"
+                        sodipodi:cy="330.93362"
+                        sodipodi:cx="-595.71429"
+                        sodipodi:end="5.0799003"
+                        sodipodi:start="3.7535752"
+                />
+                <path
+                        id="path2395"
+                        sodipodi:rx="241.42857"
+                        sodipodi:ry="241.42857"
+                        style="fill-opacity:0;stroke:#ffffff;stroke-linecap:round;stroke-miterlimit:0;stroke-width:4.3447"
+                        sodipodi:type="arc"
+                        d="m-812.31 224.28c58.901-119.62 203.62-168.85 323.25-109.94 14.077 6.9316 27.445 15.219 39.915 24.745"
+                        sodipodi:open="true"
+                        transform="matrix(-.48137 1.7565 -1.4947 -.58757 747.66 1322.2)"
+                        sodipodi:cy="330.93362"
+                        sodipodi:cx="-595.71429"
+                        sodipodi:end="5.3647616"
+                        sodipodi:start="3.5991376"
+                />
+                <path
+                        id="path2397"
+                        sodipodi:rx="262.63965"
+                        sodipodi:ry="81.208313"
+                        style="stroke-linejoin:round;stroke:#cd5c5c;stroke-linecap:round;stroke-miterlimit:0;stroke-width:12.364;fill:none"
+                        sodipodi:type="arc"
+                        d="m234.41 399.82c72.146 38.909 28.62 88.535-97.218 110.84-125.84 22.307-286.33 8.8492-358.48-30.06-46.869-25.277-46.35-56.381 1.3602-81.507"
+                        sodipodi:open="true"
+                        transform="matrix(-1.534 .69053 .66076 1.3071 411.82 -501.27)"
+                        sodipodi:cy="440.20975"
+                        sodipodi:cx="6.5659914"
+                        sodipodi:end="9.9556716"
+                        sodipodi:start="5.7626117"
+                />
+            </g
+            >
+        </g
+        >
+        <metadata
+        >
+            <rdf:RDF
+            >
+                <cc:Work
+                >
+                    <dc:format
+                    >image/svg+xml</dc:format
+                    >
+                    <dc:type
+                            rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+                    />
+                    <cc:license
+                            rdf:resource="http://creativecommons.org/licenses/publicdomain/"
+                    />
+                    <dc:publisher
+                    >
+                        <cc:Agent
+                                rdf:about="http://openclipart.org/"
+                        >
+                            <dc:title
+                            >Openclipart</dc:title
+                            >
+                        </cc:Agent
+                        >
+                    </dc:publisher
+                    >
+                </cc:Work
+                >
+                <cc:License
+                        rdf:about="http://creativecommons.org/licenses/publicdomain/"
+                >
+                    <cc:permits
+                            rdf:resource="http://creativecommons.org/ns#Reproduction"
+                    />
+                    <cc:permits
+                            rdf:resource="http://creativecommons.org/ns#Distribution"
+                    />
+                    <cc:permits
+                            rdf:resource="http://creativecommons.org/ns#DerivativeWorks"
+                    />
+                </cc:License
+                >
+            </rdf:RDF
+            >
+        </metadata
+        >
+    </svg>
+</div>
+<div id="delete_svg_div">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 489.425 489.425" style="enable-background:new 0 0 489.425 489.425;" xml:space="preserve">
+<g>
+  <g>
+    <path d="M122.825,394.663c17.8,19.4,43.2,30.6,69.5,30.6h216.9c44.2,0,80.2-36,80.2-80.2v-200.7c0-44.2-36-80.2-80.2-80.2h-216.9    c-26.4,0-51.7,11.1-69.5,30.6l-111.8,121.7c-14.7,16.1-14.7,40.3,0,56.4L122.825,394.663z M29.125,233.063l111.8-121.8    c13.2-14.4,32-22.6,51.5-22.6h216.9c30.7,0,55.7,25,55.7,55.7v200.6c0,30.7-25,55.7-55.7,55.7h-217c-19.5,0-38.3-8.2-51.5-22.6    l-111.7-121.8C23.025,249.663,23.025,239.663,29.125,233.063z"></path>
+    <path d="M225.425,309.763c2.4,2.4,5.5,3.6,8.7,3.6s6.3-1.2,8.7-3.6l47.8-47.8l47.8,47.8c2.4,2.4,5.5,3.6,8.7,3.6s6.3-1.2,8.7-3.6    c4.8-4.8,4.8-12.5,0-17.3l-47.9-47.8l47.8-47.8c4.8-4.8,4.8-12.5,0-17.3s-12.5-4.8-17.3,0l-47.8,47.8l-47.8-47.8    c-4.8-4.8-12.5-4.8-17.3,0s-4.8,12.5,0,17.3l47.8,47.8l-47.8,47.8C220.725,297.263,220.725,304.962,225.425,309.763z"></path>
+  </g>
+</g>
+</svg>
+</div>
+<div id="upper_case_svg">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 284.929 284.929" style="enable-background:new 0 0 284.929 284.929;" xml:space="preserve">
+<g>
+  <path id="upper_tool" d="M282.082,195.285L149.028,62.24c-1.901-1.903-4.088-2.856-6.562-2.856s-4.665,0.953-6.567,2.856L2.856,195.285   C0.95,197.191,0,199.378,0,201.853c0,2.474,0.953,4.664,2.856,6.566l14.272,14.271c1.903,1.903,4.093,2.854,6.567,2.854   c2.474,0,4.664-0.951,6.567-2.854l112.204-112.202l112.208,112.209c1.902,1.903,4.093,2.848,6.563,2.848   c2.478,0,4.668-0.951,6.57-2.848l14.274-14.277c1.902-1.902,2.847-4.093,2.847-6.566   C284.929,199.378,283.984,197.188,282.082,195.285z"></path>
+</g>
+</svg>
 </div>
 </body>
 <script type="application/javascript">
@@ -132,7 +359,8 @@
 
 
           var onSelectWordDiv = document.getElementById("onSelectWordDiv"),
-                  inputShowDiv = document.getElementById("input_btn_div");
+                  inputShowDiv = document.getElementById("input_btn_div"),
+                  inner_text = document.getElementById("inner_text");
     window.onload = function(){
         var width = document.body.clientWidth,
                 height = width*392/720,
@@ -153,14 +381,14 @@
                 printInnerBtn(i,1);
             }
             emptyDiv();
-            functionalDiv();
+            functionalDiv(0);
             optionalDiv();
             for (var i = 0;i<wordList[2].length;i++){
                 printInnerBtn(i,2);
             }
             optionalDiv();
-            functionalDiv();
-            functionalDiv();
+            functionalDiv(1);
+            functionalDiv(2);
             functionalDiv(3);
             spaceDiv();
             enterDiv();
@@ -186,8 +414,77 @@
             div.className = "innerSetBox toolkit-color";
             if (no == 3){
                 div.style.left = "5%";
+                var innerDiv = document.createElement("div");
+                innerDiv.innerHTML = document.getElementById("svg_div").innerHTML;
+                innerDiv.style.width = "80%";
+                innerDiv.style.marginLeft = "auto";
+                innerDiv.style.marginRight = "auto";
+                innerDiv.style.paddingTop = "5px";
+                div.appendChild(innerDiv);
+            }else if (no == 1){
+                //inputShowDiv.innerText
+                var innerDiv = document.createElement("div");
+                innerDiv.innerHTML = document.getElementById("delete_svg_div").innerHTML;
+                innerDiv.style.width = "70%";
+                innerDiv.style.marginLeft = "auto";
+                innerDiv.style.marginRight = "auto";
+                innerDiv.style.paddingTop = "5px";
+                upper.style.lineHeight = document.getElementsByClassName("alphabet")[0].clientHeight + "px";
+                div.appendChild(innerDiv);              //  delete_svg_div
+                div.onclick = function(){
+                    if (inner_text.innerText != ""){
+                        var str =  inner_text.innerText;
+                        inner_text.innerText =str.substring(0,str.length-1)
+                    }
+                }
+            }else if (no == 2){
+                var div = document.createElement("div");
+                div.className = "sendBtn toolkit-color";
+                div.innerText = "123";
+                div.style.fontSize = width/32 + "px";
+                div.style.lineHeight = height*0.85/4 + "px";
+                div.style.width = "90%";
+                upper.appendChild(div);
+            }else if (no == 0){
+                //点击大写
+                var innerDiv = document.createElement("div");
+                innerDiv.innerHTML = document.getElementById("upper_case_svg").innerHTML;
+                innerDiv.style.width = "54%";
+                innerDiv.style.marginLeft = "auto";
+                innerDiv.style.marginRight = "auto";
+                innerDiv.style.paddingTop = "5px";
+                div.appendChild(innerDiv);
+                upper.style.lineHeight = document.getElementsByClassName("alphabet")[0].clientHeight + "px";
+                var lower = true;
+                div.onclick = function(){
+                    if (lower){
+                        $('#upper_tool').css({
+                            "fill":"00CCFF"
+                        });
+                        changeInnerAlpha(0);
+                        lower = false;
+                    }else{
+                        $('#upper_tool').css({
+                            "fill":"black"
+                        });
+                        changeInnerAlpha(1);
+                        lower = true;
+                    }
+                }
             }
+            //upper_case_svg
             upper.appendChild(div);
+        }
+
+        function changeInnerAlpha(caseType){
+            var alphabet = document.getElementsByClassName("alphabet");
+            for (var i = 0 ;i<alphabet.length;i++){
+                if (caseType == 0){
+                    alphabet[i].innerText = alphabet[i].innerText.toUpperCase();
+                }else{
+                    alphabet[i].innerText = alphabet[i].innerText.toLowerCase();
+                }
+            }
         }
 
         function emptyDiv(){
@@ -203,10 +500,17 @@
             keyboard.appendChild(div);
             div.style.height = "16.66%";
             div.style.float = "left";
+            div.style.textAlign = "center";
             div.style.position = "relative";
             var innerDiv = document.createElement("div");
             innerDiv.className = "spaceBtn";
+            innerDiv.innerText = "空格";
+            div.style.fontSize = width/32 + "px";
+            div.style.lineHeight = height*0.85/4 + "px";
             div.appendChild(innerDiv);
+            div.onclick = function(){
+                inner_text.innerText = inner_text.innerText + "  ";
+            }
         }
 
         function enterDiv(){
@@ -218,7 +522,7 @@
             div.className = "sendBtn toolkit-color";
             div.innerText = "发送";
             div.style.fontSize = width/32 + "px";
-            div.style.lineHeight = height*0.9/4 + "px";
+            div.style.lineHeight = height*0.85/4 + "px";
             div.style.width = "90%";
             upper.appendChild(div);
         }
@@ -230,20 +534,17 @@
             innerDiv.className = "alphabet";
             innerDiv.innerText = wordList[list][i];
             innerDiv.onclick = function(){
-                clickTheWord(wordList[list][i]);
+                inner_text.innerText = inner_text.innerText + innerDiv.innerText;
             };
             keyboard.appendChild(div);
             div.appendChild(innerDiv);
         }
 
-        function clickTheWord(n){
-            console.log(n);
-        }
-
         printList();
 
         $('.alphabet').css({
-            "font-size":width/16+"px"
+            "font-size":width/16+"px",
+            "line-height":document.getElementsByClassName("alphabet")[0].clientHeight + "px"
         })
 
         $('.onSelectWord').css({
@@ -251,7 +552,7 @@
         })
         function setTitle(){
             var left = 0;
-            var wordDesc = ["sadasd","asdsadasd","adasdasd","asdasdasd","dsfdsda","fuck","asdasdsad","aawww"];
+            var wordDesc = ["hello","welcome","hello","welcome","hello","welcome","hello","welcome","hello","welcome"];
             for (var i = 0;i<wordDesc.length;i++){
                 var div = document.createElement("div");
                 div.className = "onSelectWord";
@@ -259,11 +560,17 @@
                 div.style.left = left + "px";
                 onSelectWordDiv.appendChild(div);
                 div.onclick = function(){
-                    inputShowDiv.innerText = inputShowDiv.innerText + this.innerText;
+                    inner_text.innerText = inner_text.innerText + this.innerText;
                 }
-                left = left + 10*i + div.clientWidth;
+                left = left + 10 + div.clientWidth;
             }
         }
     }
+
+          //path2392 颜色变化
+
+          $(function() {
+              FastClick.attach(document.body);
+          });
 </script>
 </html>
