@@ -9,6 +9,8 @@
     <meta name="360-fullscreen" content="true"/>
     <script src="jquery.min.js" type="text/javascript"></script>
     <script src="fastclick.js" type="application/javascript"></script>
+    <script src="wordFrequency.js" type="application/javascript"></script>
+    <script src="pinyin.js" type="application/javascript"></script>
     <style type="text/css">
         body{
             margin:0;
@@ -354,23 +356,25 @@
 </div>
 </body>
 <script type="application/javascript">
-          //720*392
+    //720*392
 
+    var onBlurStr = "";
 
+    var isEng = true;
 
-          var onSelectWordDiv = document.getElementById("onSelectWordDiv"),
-                  inputShowDiv = document.getElementById("input_btn_div"),
-                  inner_text = document.getElementById("inner_text");
+    var onSelectWordDiv = document.getElementById("onSelectWordDiv"),
+            inputShowDiv = document.getElementById("input_btn_div"),
+            inner_text = document.getElementById("inner_text");
     window.onload = function(){
         var width = document.body.clientWidth,
                 height = width*392/720,
                 keyboard = document.getElementById("keyboardParent");
         keyboard.style.height = height/2*3+"px";
         var wordList = [
-                ["q","w","e","r","t","y","u","i","o","p"],
-                ["a","s","d","f","g","h","j","k","l"],
-                ["z","x","c","v","b","n","m"]
-                ];
+            ["q","w","e","r","t","y","u","i","o","p"],
+            ["a","s","d","f","g","h","j","k","l"],
+            ["z","x","c","v","b","n","m"]
+        ];
 
         function printList(){
             for (var i = 0;i<wordList[0].length;i++){
@@ -392,7 +396,6 @@
             functionalDiv(3);
             spaceDiv();
             enterDiv();
-            setTitle();
             $('#input_btn_div').css({
                 "line-height":height*0.25*0.85 + "px"
             })
@@ -420,6 +423,19 @@
                 innerDiv.style.marginLeft = "auto";
                 innerDiv.style.marginRight = "auto";
                 innerDiv.style.paddingTop = "5px";
+                div.onclick = function(){
+                    if(isEng){
+                        $('#path2392').css({
+                            "fill":"rgb(0, 204, 255)"
+                        })
+                        isEng = false;
+                    }else{
+                        $('#path2392').css({
+                            "fill":"transparent"
+                        })
+                        isEng = true;
+                    }
+                };
                 div.appendChild(innerDiv);
             }else if (no == 1){
                 //inputShowDiv.innerText
@@ -434,7 +450,9 @@
                 div.onclick = function(){
                     if (inner_text.innerText != ""){
                         var str =  inner_text.innerText;
-                        inner_text.innerText =str.substring(0,str.length-1)
+                        inner_text.innerText =str.substring(0,str.length-1);
+                        onBlurStr = inner_text.innerText.toLowerCase();
+                        findFiveWord(onBlurStr);
                     }
                 }
             }else if (no == 2){
@@ -494,6 +512,49 @@
             keyboard.appendChild(div);
         }
 
+        function findFiveWord(word){
+            var count = 0,
+                    wordDesc = [],
+                    currentLocation = word.length,
+                    testArr = [];
+            if (isEng){
+                for (var i = 0;i<wordFreq.length;i++){
+                    if (wordFreq[i].indexOf(word)!=-1){
+                        wordDesc.push(wordFreq[i]);
+                        count++;
+                        if (count == 10){
+                            break;
+                        }
+                    }
+                }
+            }else{
+                for (var i = 0;i<pyArr.length;i++){
+                    if (currentLocation<=pyArr[i].length){
+                        var mockArr = pyArr[i].substring(0,currentLocation)
+                        if (mockArr == word){
+                            testArr.push(pyArr[i])
+                        }
+                    }
+                }
+                for (var i = 0;i<testArr.length;i++){
+                    var thisTimeArr = pyDict[testArr[i]];
+                    for (var j = 0;j<thisTimeArr.length;j++){
+                        var wordString  = "\\u"+thisTimeArr[j];
+                        var word = unescape(wordString.replace(/\u/g, "%u"));
+                        wordDesc.push(word.replace("\\",""));
+                        count++;
+                        if (count == 20){
+                            break;
+                        }
+                    }
+                    if (count == 20){
+                        break;
+                    }
+                }
+            }
+            setTitle(wordDesc);
+        }
+
         function spaceDiv(){
             var div = document.createElement("div");
             div.style.width = width*476/980 + "px";
@@ -535,6 +596,8 @@
             innerDiv.innerText = wordList[list][i];
             innerDiv.onclick = function(){
                 inner_text.innerText = inner_text.innerText + innerDiv.innerText;
+                onBlurStr = inner_text.innerText.toLowerCase();
+                findFiveWord(onBlurStr);
             };
             keyboard.appendChild(div);
             div.appendChild(innerDiv);
@@ -545,14 +608,11 @@
         $('.alphabet').css({
             "font-size":width/16+"px",
             "line-height":document.getElementsByClassName("alphabet")[0].clientHeight + "px"
-        })
+        });
 
-        $('.onSelectWord').css({
-            "lineHeight":height/4+"px"
-        })
-        function setTitle(){
+        function setTitle(wordDesc){
             var left = 0;
-            var wordDesc = ["hello","welcome","hello","welcome","hello","welcome","hello","welcome","hello","welcome"];
+            onSelectWordDiv.innerHTML = "";
             for (var i = 0;i<wordDesc.length;i++){
                 var div = document.createElement("div");
                 div.className = "onSelectWord";
@@ -561,16 +621,19 @@
                 onSelectWordDiv.appendChild(div);
                 div.onclick = function(){
                     inner_text.innerText = inner_text.innerText + this.innerText;
-                }
+                };
                 left = left + 10 + div.clientWidth;
             }
+            $('.onSelectWord').css({
+                "lineHeight":height/4+"px"
+            });
         }
     }
 
-          //path2392 颜色变化
+    //path2392 颜色变化
 
-          $(function() {
-              FastClick.attach(document.body);
-          });
+    $(function() {
+        FastClick.attach(document.body);
+    });
 </script>
 </html>
