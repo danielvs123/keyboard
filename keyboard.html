@@ -527,6 +527,7 @@
                         }
                     }
                 }
+                setTitle(wordDesc);
             }else{
                 for (var i = 0;i<pyArr.length;i++){
                     if (currentLocation<=pyArr[i].length){
@@ -536,23 +537,29 @@
                         }
                     }
                 }
+                var waitingArr = []
                 for (var i = 0;i<testArr.length;i++){
                     var thisTimeArr = pyDict[testArr[i]];
                     for (var j = 0;j<thisTimeArr.length;j++){
-                        var wordString  = "\\u"+thisTimeArr[j];
-                        var word = unescape(wordString.replace(/\u/g, "%u"));
-                        wordDesc.push(word.replace("\\",""));
-                        count++;
-                        if (count == 20){
-                            break;
-                        }
-                    }
-                    if (count == 20){
-                        break;
+                        var wordString  = thisTimeArr[j];
+                        waitingArr.push(wordString);
                     }
                 }
+                var unique = uniqueF(waitingArr);
+                setTitle(unique);
             }
-            setTitle(wordDesc);
+        }
+        function uniqueF(array){
+            var r = [];
+            for(var i = 0, l = array.length; i < l; i++) {
+                for(var j = i + 1; j < l; j++)
+                    if (array[i] === array[j]) j = ++i;
+                r.push(array[i]);
+            }
+            if (r.length>20){
+                r.length = 20;
+            }
+            return r;
         }
 
         function spaceDiv(){
