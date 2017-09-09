@@ -5,3 +5,7 @@
 还在开发的功能：
 记录每一部操作然后倒退时候不需要查询
 分词算法套入
+
+![image](https://github.com/danielvs123/keyboard/blob/master/images/chn.jpeg)
+
+![image](https://github.com/danielvs123/keyboard/blob/master/images/eng.jpeg)
