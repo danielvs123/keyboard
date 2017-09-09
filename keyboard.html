@@ -512,15 +512,26 @@
             keyboard.appendChild(div);
         }
 
+        //寻找单词
         function findFiveWord(word){
             var count = 0,
                     wordDesc = [],
                     currentLocation = word.length,
                     testArr = [];
             if (isEng){
+                var thisTimeArr = [],
+                        wordLength = word.length;
                 for (var i = 0;i<wordFreq.length;i++){
-                    if (wordFreq[i].indexOf(word)!=-1){
-                        wordDesc.push(wordFreq[i]);
+                    if (wordFreq[i].length>=wordLength){
+                        var thisWord = (wordFreq[i].substring(0,wordLength)).toLowerCase();
+                        if (thisWord == word){
+                            thisTimeArr.push(wordFreq[i]);
+                        }
+                    }
+                }
+                for (var i = 0;i<thisTimeArr.length;i++){
+                    if (thisTimeArr[i].indexOf(word)!=-1){
+                        wordDesc.push(thisTimeArr[i]);
                         count++;
                         if (count == 10){
                             break;
