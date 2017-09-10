@@ -9,3 +9,5 @@
 ![image](https://github.com/danielvs123/keyboard/blob/master/images/chn.jpeg)
 
 ![image](https://github.com/danielvs123/keyboard/blob/master/images/eng.jpeg)
+
+![image](https://github.com/danielvs123/keyboard/blob/master/images/char.jpeg)
