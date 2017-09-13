@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="wordFrequency.js" type="application/javascript"></script>
+    <script src="pinyin.js" type="application/javascript"></script>
+</head>
+<body>
+<input type="text" onchange="updateInput(this.value)" />
+<div id="showInput"></div>
+<script type="application/javascript">
+    var showInput = document.getElementById("showInput");
+
+    function unique(array){
+        var r = [];
+        for(var i = 0, l = array.length; i < l; i++) {
+            for(var j = i + 1; j < l; j++)
+                if (array[i] === array[j]) j = ++i;
+            r.push(array[i]);
+        }
+        if (r.length>20){
+            r.length = 20;
+        }
+        return r;
+    }
+
+    function updateInput(pinyin) {
+        showInput.innerText = pinyin;
+        var pyA = [];
+        for (var i = 0;i < pyArr.length;i++){
+            var iStr = pyArr[i].substring(0,pinyin.length);
+            if (iStr == pinyin){
+                if (pinyin == pyArr[i]){
+                    pyA.splice(0,0,pinyin);
+                }else{
+                    pyA.push(pyArr[i]);
+                }
+            }
+        }
+        console.log(findWord(pyA));
+    }
+
+    function slicePinYin(py){
+        for (var i = 0;i < py.length;i++){
+            for (var j = 0;j < pyArr.length;j++){
+
+            }
+        }
+    }
+
+    function findWord(py){
+        var rtn = [],lgh = 0;
+        for (var i = 0;i<py.length;i++){
+            var arr = pyDict[py[i]];
+            for (var j = 0;j<arr.length;j++){
+                if (lgh<20){
+                    lgh++;
+                    rtn.push(arr[j])
+                }
+            }
+        }
+        return rtn;
+    }
+</script>
+
+</body>
+</html>
